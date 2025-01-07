@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,15 +22,33 @@ public class Scene1Manager : MonoBehaviour
 
     }
 
+    public class PlayerName 
+    {
+        public string name;
+    }
 
     public void SavePlayerName()
     {
-        //  MainManager.Instance.SavePlayerNameData();
+        // Save Nama Player ke Json
+        PlayerName data = new PlayerName();
+        data.name = namaInput.text;
+
+        string json = JsonUtility.ToJson(data);
+
+        File.WriteAllText(Application.dataPath + "/filePlayerName.json", json);
     }
 
     public void LoadPlayerName()
     {
-        // MainManager.Instance.LoadScoreData();
+        // Mendapatkan nama Player dari file json ke NamaInput.Text
+        string path = Application.dataPath + "/filePlayerName.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+
+            PlayerName data = JsonUtility.FromJson<PlayerName>(json);
+            namaInput.text = data.name;
+        }
     }
 
     public void PlayGame()
