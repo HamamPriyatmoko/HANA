@@ -3680,30 +3680,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3494409345320732426, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
-      propertyPath: MaxDistance
-      value: 24.274761
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622284487762661179, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622284487762661179, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622284487762661179, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622284487762661179, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709286923334119356, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
-      propertyPath: rotationThrust
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 9014509431930537492, guid: ec01d776e069aaa4fa595cbb60c7a744, type: 3}
       propertyPath: m_Name
       value: Rocket
