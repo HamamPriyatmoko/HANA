@@ -1717,7 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81322d1c9acffa140a7c2284b79bba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationThrust: 100
+  rotationThrust: 200
   mainThrust: 1000
   audioClip: {fileID: 8300000, guid: fe382b3a56ec4234c8a2c0e09aa4225b, type: 3}
   mainEngineParticle: {fileID: 6671212298881952659}
@@ -1771,7 +1771,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 24.060513
+  MaxDistance: 24.274761
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2003,6 +2003,10 @@ PrefabInstance:
     - target: {fileID: 4436899185823514, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
