@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Movement : MonoBehaviour
 {
@@ -110,4 +111,20 @@ public class Movement : MonoBehaviour
         rb.freezeRotation = false;
     }
 
-}
+    // Variabel untuk skor
+    // public int score = 0;
+    // public Text scoreText; // Referensi ke UI Text untuk menampilkan skor
+
+    //public void AddPoints(int points)
+    //{
+    //    // Tambahkan poin ke skor
+    //    score += points;
+
+    //    // Perbarui tampilan skor
+    //    if (scoreText != null)
+    //    {
+    //        scoreText.text = "Score: " + score;
+    //    }
+    //}
+
+    }
