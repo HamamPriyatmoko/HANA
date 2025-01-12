@@ -15,20 +15,19 @@ public class Movement : MonoBehaviour
     public float rotationThrust = 100f;
     public float mainThrust = 100f;
     [SerializeField] AudioClip audioClip;
+    //untuk score
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI nameText;
+    public int score;
     /*public bool isGameOver = false;*/
 
     [SerializeField] ParticleSystem mainEngineParticle;
     [SerializeField] ParticleSystem leftThrustParticle;
     [SerializeField] ParticleSystem rightThrustParticle;
 
-    //untuk score
-    public TextMeshProUGUI scoreText;
-    public int score;
-
     Rigidbody rb;
     AudioSource audioSource;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +36,7 @@ public class Movement : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         //kondisi saat pertama kali mulai skor 0
+        nameText.text = "Name: " + Scene1Manager.Instance.namaInput.text;
         score = 0;
         scoreText.text = "Score: " + score;
     }

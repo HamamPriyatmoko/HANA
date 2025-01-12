@@ -9,6 +9,16 @@ using UnityEngine.SceneManagement;
 public class Scene1Manager : MonoBehaviour
 {
     public TMP_InputField namaInput;
+    public static Scene1Manager Instance;
+    private void Start()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     [System.Serializable]
     public class PlayerName
