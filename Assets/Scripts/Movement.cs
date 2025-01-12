@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -20,6 +21,10 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem leftThrustParticle;
     [SerializeField] ParticleSystem rightThrustParticle;
 
+    //untuk score
+    public TextMeshProUGUI scoreText;
+    public int score;
+
     Rigidbody rb;
     AudioSource audioSource;
 
@@ -30,6 +35,10 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+        //kondisi saat pertama kali mulai skor 0
+        score = 0;
+        scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -37,6 +46,8 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
+        // Perbarui teks skor di UI
+        scoreText.text = "Score: " + score;
     }
 
     void ProcessThrust()
@@ -113,12 +124,21 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        // Periksa apakah objek yang mengenai adalah Player
+        // Periksa apakah objek yang mengenai adalah Objek Poin
         if (other.gameObject.CompareTag("Poin"))
         {
             // Hancurkan objek ini
             Destroy(other.gameObject);
+            // Tambah skor
+            score += 10;
+
         }
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
     }
 
     // Variabel untuk skor
