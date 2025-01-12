@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4476116615566918765}
   m_Layer: 0
   m_Name: Diamond
-  m_TagString: Untagged
+  m_TagString: Poin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5286579, y: 0.4381067, z: 0.13562739}
-  m_Center: {x: -8.3143387e-19, y: -0.000000021674415, z: -0.16110203}
+  m_Size: {x: 0.5286579, y: 0.4381067, z: 0.43025488}
+  m_Center: {x: -8.3143387e-19, y: -0.000000021674415, z: -0.013788397}
 --- !u!114 &4476116615566918765
 MonoBehaviour:
   m_ObjectHideFlags: 0

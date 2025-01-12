@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Friendly
   - Fuel
+  - Poin
   layers:
   - Default
   - TransparentFX

@@ -111,6 +111,15 @@ public class Movement : MonoBehaviour
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationThisFrame);
         rb.freezeRotation = false;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        // Periksa apakah objek yang mengenai adalah Player
+        if (other.gameObject.CompareTag("Poin"))
+        {
+            // Hancurkan objek ini
+            Destroy(other.gameObject);
+        }
+    }
 
     // Variabel untuk skor
     // public int score = 0;
