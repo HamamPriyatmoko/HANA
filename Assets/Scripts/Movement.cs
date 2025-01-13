@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
 
         //kondisi saat pertama kali mulai skor 0
         nameText.text = "Name: " + Scene1Manager.Instance.namaInput.text;
-        score = 0;
+        
         scoreText.text = "Score: " + score;
     }
 
