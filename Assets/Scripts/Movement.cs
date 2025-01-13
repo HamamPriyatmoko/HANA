@@ -34,6 +34,9 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
 
+        // Ambil skor dari Scene2Manager
+        score = Scene2Manager.Instance.playerScore;
+
         //kondisi saat pertama kali mulai skor 0
         nameText.text = "Name: " + Scene1Manager.Instance.namaInput.text;
         score = 0;
@@ -134,6 +137,10 @@ public class Movement : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+
+        // Update skor di Scene2Manager
+        Scene2Manager.Instance.AddScore(scoreToAdd);
+
         scoreText.text = "Score: " + score;
     }
 
