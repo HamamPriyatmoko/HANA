@@ -10,7 +10,6 @@ public class Movement : MonoBehaviour
     // Parameters - for tunning, typically set in the editor
     // Cache - e.g references for readibility or speed
     // State - private instance (member) variables
-
     
     public float rotationThrust = 100f;
     public float mainThrust = 100f;
@@ -46,8 +45,6 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
-        // Perbarui teks skor di UI
-        scoreText.text = "Score: " + score;
     }
 
     void ProcessThrust()
@@ -130,8 +127,7 @@ public class Movement : MonoBehaviour
             // Hancurkan objek ini
             Destroy(other.gameObject);
             // Tambah skor
-            score += 10;
-
+            AddScore(10);
         }
     }
 

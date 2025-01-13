@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 1493814116864047005}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1721,6 +1721,9 @@ MonoBehaviour:
   rotationThrust: 200
   mainThrust: 1000
   audioClip: {fileID: 8300000, guid: fe382b3a56ec4234c8a2c0e09aa4225b, type: 3}
+  scoreText: {fileID: 0}
+  nameText: {fileID: 0}
+  score: 10
   mainEngineParticle: {fileID: 6671212298881952659}
   leftThrustParticle: {fileID: 5104925679130271008}
   rightThrustParticle: {fileID: 813650626053826196}
