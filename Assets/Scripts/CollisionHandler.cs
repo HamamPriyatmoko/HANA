@@ -4,18 +4,22 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
+using System;
 
 public class CollisionHandler : MonoBehaviour
 {
     public float levelLoadDelay = 1f;
     public int score;
+    int saveScore;
 
     [SerializeField] AudioClip[] audioClip;
     [SerializeField] ParticleSystem successParticle;
     [SerializeField] ParticleSystem crashParticle;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI yourscoreText;
     AudioSource audioSource;
+    public Canvas canvasPopUp;
 
     bool isTransitioning = false;
     bool collisionDisable = false;
@@ -24,7 +28,6 @@ public class CollisionHandler : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         isTransitioning = false;
-
         // Ambil skor dari Scene2Manager
         score = Scene2Manager.Instance.playerScore;
 
@@ -32,6 +35,7 @@ public class CollisionHandler : MonoBehaviour
         nameText.text = "Name: " + Scene1Manager.Instance.namaInput.text;
 
         scoreText.text = "Score: " + score;
+        
     }
     private void Update()
     {
@@ -66,7 +70,6 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("This thing is friendly");
                 break;
             default:
-                Scene2Manager.Instance.ResetScore();
                 StartCrashSequence();
                 /*Invoke("ReloadLevel", .5f);*/ //karna waktunya second maka menggunakan float atau f 
                 break;
@@ -112,7 +115,7 @@ public class CollisionHandler : MonoBehaviour
     {
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
-
+        
         // Simpan skor ke file JSON
         Scene2Manager.Instance.SaveScoreToJson(Scene1Manager.Instance.namaInput.text);
 
@@ -126,17 +129,21 @@ public class CollisionHandler : MonoBehaviour
     {
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
-
+        PlayerPrefs.SetInt("PlayerScore", score);
+        saveScore = PlayerPrefs.GetInt("PlayerScore",0);
+        yourscoreText.text = "Your Score : " + saveScore.ToString(); 
         /*// Simpan skor ke file JSON
         Scene2Manager.Instance.SaveScoreToJson(Scene1Manager.Instance.namaInput.text);*/
 
-        Invoke("ReloadLevel", levelLoadDelay);
+        /*Invoke("ReloadLevel", levelLoadDelay);*/
         crashParticle.Play();
         audioSource.Stop();
         audioSource.PlayOneShot(audioClip[0]);
+        if (canvasPopUp != null)
+        {
+            canvasPopUp.gameObject.SetActive(true);
+        }
     }
-
-
     void NextLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -149,13 +156,16 @@ public class CollisionHandler : MonoBehaviour
         /*SceneManager.LoadScene(currentSceneIndex + 1, LoadSceneMode.Single);*/    //load scene mode single agar scene sebelumnya diclose dan memuat scene baru / selanjutnya
         SceneManager.LoadScene(nextsceneindex);
     }
-    void ReloadLevel()
+    public void ReloadLevel()
     {
+        Scene2Manager.Instance.ResetScore();
         /* SceneManager.LoadScene("Sandbox", LoadSceneMode.Single);*/ //Code untuk mengulang scene tetapi tidak tumpang tindih dengan scene lain karena menggunakan single
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
-
-    
-
+    public void BackToMenu() 
+    {
+        Scene2Manager.Instance.ResetScore();
+        SceneManager.LoadScene(0);
+    }
 }
