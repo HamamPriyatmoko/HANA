@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     //untuk score
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI levelText;
     public int score;
     /*public bool isGameOver = false;*/
 
@@ -26,6 +27,7 @@ public class Movement : MonoBehaviour
 
     Rigidbody rb;
     AudioSource audioSource;
+    Scene namalevel;
 
 
     // Start is called before the first frame update
@@ -33,6 +35,9 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+        namalevel = SceneManager.GetActiveScene();
+        levelText.text = namalevel.name;
 
         // Ambil skor dari Scene2Manager
         score = Scene2Manager.Instance.playerScore;
