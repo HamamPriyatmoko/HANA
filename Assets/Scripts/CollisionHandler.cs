@@ -110,27 +110,33 @@ public class CollisionHandler : MonoBehaviour
     }*/
     void StartSuccessSequence()
     {
-        // todo add sfx upon succes
-        // todo add particle effect upon succes
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
+
+        // Simpan skor ke file JSON
+        Scene2Manager.Instance.SaveScoreToJson(Scene1Manager.Instance.namaInput.text);
+
         Invoke("NextLevel", levelLoadDelay);
         successParticle.Play();
         audioSource.Stop();
         audioSource.PlayOneShot(audioClip[1]);
-
     }
+
     void StartCrashSequence()
     {
-        // todo add sfx upon crash
-        // todo add particle effect upon crash
         isTransitioning = true;
         GetComponent<Movement>().enabled = false;
+
+        /*// Simpan skor ke file JSON
+        Scene2Manager.Instance.SaveScoreToJson(Scene1Manager.Instance.namaInput.text);*/
+
         Invoke("ReloadLevel", levelLoadDelay);
         crashParticle.Play();
         audioSource.Stop();
         audioSource.PlayOneShot(audioClip[0]);
     }
+
+
     void NextLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
