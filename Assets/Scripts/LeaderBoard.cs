@@ -61,7 +61,7 @@ public class LeaderBoard : MonoBehaviour
         }
     }
 
-    public void AddEntryToJson(string playerName, int score)
+    /*public void AddEntryToJson(string playerName, int score)
     {
         // Buat leaderboard baru jika file tidak ada
         LeaderboardData leaderboardData = new LeaderboardData();
@@ -84,7 +84,7 @@ public class LeaderBoard : MonoBehaviour
 
         Debug.Log($"Added new entry: {playerName} with score {score}");
         GetLeaderBoardFromJson(); // Refresh leaderboard
-    }
+    }*/
 
     [System.Serializable]
     public class LeaderboardEntry
