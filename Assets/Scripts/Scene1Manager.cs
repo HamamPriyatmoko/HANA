@@ -10,6 +10,7 @@ public class Scene1Manager : MonoBehaviour
 {
     public TMP_InputField namaInput;
     public static Scene1Manager Instance;
+    public GameObject warningPopUp;
     private void Start()
     {
         if (Instance != null)
@@ -113,14 +114,17 @@ public class Scene1Manager : MonoBehaviour
         }
         else
         {
+            warningPopUp.SetActive(true);
             Debug.LogWarning("Tolong isi namanya terlebih dahulu!");
         }
     }
-
     public void ToLeaderboard()
     {
         SceneManager.LoadScene(4);
     }
-
+    public void ExitWarning()
+    {
+        warningPopUp.SetActive(false);
+    }
 
 }
