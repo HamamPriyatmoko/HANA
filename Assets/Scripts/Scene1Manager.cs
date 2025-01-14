@@ -116,4 +116,9 @@ public class Scene1Manager : MonoBehaviour
             Debug.LogWarning("Tolong isi namanya terlebih dahulu!");
         }
     }
+
+    public void ToLeaderboard()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

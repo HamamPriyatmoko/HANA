@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class LeaderBoard : MonoBehaviour
 {
@@ -103,5 +104,10 @@ public class LeaderBoard : MonoBehaviour
     public class LeaderboardData
     {
         public List<LeaderboardEntry> leaderboards = new List<LeaderboardEntry>();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
