@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 public class CollisionHandler : MonoBehaviour
 {
     public float levelLoadDelay = 1f;
+    public int score;
 
     [SerializeField] AudioClip[] audioClip;
     [SerializeField] ParticleSystem successParticle;
     [SerializeField] ParticleSystem crashParticle;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI nameText;
     AudioSource audioSource;
 
     bool isTransitioning = false;
@@ -20,6 +25,13 @@ public class CollisionHandler : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         isTransitioning = false;
 
+        // Ambil skor dari Scene2Manager
+        score = Scene2Manager.Instance.playerScore;
+
+        //kondisi saat pertama kali mulai skor 0
+        nameText.text = "Name: " + Scene1Manager.Instance.namaInput.text;
+
+        scoreText.text = "Score: " + score;
     }
     private void Update()
     {
@@ -54,12 +66,34 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("This thing is friendly");
                 break;
             default:
+                Scene2Manager.Instance.ResetScore();
                 StartCrashSequence();
                 /*Invoke("ReloadLevel", .5f);*/ //karna waktunya second maka menggunakan float atau f 
                 break;
         }
 
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        // Periksa apakah objek yang mengenai adalah Objek Poin
+        if (other.gameObject.CompareTag("Poin"))
+        {
+            // Hancurkan objek ini
+            Destroy(other.gameObject);
+            // Tambah skor
+            AddScore(10);
+        }
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+
+        // Update skor di Scene2Manager
+        Scene2Manager.Instance.AddScore(scoreToAdd);
+
+        scoreText.text = "Score: " + score;
     }
     /*private Vector3 start_Position;
     private Vector3 start_Rotation;

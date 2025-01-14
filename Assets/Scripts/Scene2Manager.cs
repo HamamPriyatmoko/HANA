@@ -27,4 +27,9 @@ public class Scene2Manager : MonoBehaviour
     {
         playerScore += score;
     }
+
+    public void ResetScore() 
+    {
+        playerScore = 0;
+    }
 }

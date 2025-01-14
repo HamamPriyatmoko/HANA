@@ -15,10 +15,7 @@ public class Movement : MonoBehaviour
     public float mainThrust = 100f;
     [SerializeField] AudioClip audioClip;
     //untuk score
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI nameText;
     public TextMeshProUGUI levelText;
-    public int score;
     /*public bool isGameOver = false;*/
 
     [SerializeField] ParticleSystem mainEngineParticle;
@@ -38,14 +35,6 @@ public class Movement : MonoBehaviour
 
         namalevel = SceneManager.GetActiveScene();
         levelText.text = namalevel.name;
-
-        // Ambil skor dari Scene2Manager
-        score = Scene2Manager.Instance.playerScore;
-
-        //kondisi saat pertama kali mulai skor 0
-        nameText.text = "Name: " + Scene1Manager.Instance.namaInput.text;
-        
-        scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -127,27 +116,7 @@ public class Movement : MonoBehaviour
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationThisFrame);
         rb.freezeRotation = false;
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        // Periksa apakah objek yang mengenai adalah Objek Poin
-        if (other.gameObject.CompareTag("Poin"))
-        {
-            // Hancurkan objek ini
-            Destroy(other.gameObject);
-            // Tambah skor
-            AddScore(10);
-        }
-    }
-
-    public void AddScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-
-        // Update skor di Scene2Manager
-        Scene2Manager.Instance.AddScore(scoreToAdd);
-
-        scoreText.text = "Score: " + score;
-    }
+    
 
     // Variabel untuk skor
     // public int score = 0;
